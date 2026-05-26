@@ -85,7 +85,7 @@ export default function HeroImages() {
           }}
         >
           <Image
-            src="/assest/rightTop.png"
+            src="/assets/rightTop.png"
             alt="Banking dashboard showing $42,295.00 USD balance"
             width={600}
             height={600}
@@ -105,7 +105,7 @@ export default function HeroImages() {
           }}
         >
           <Image
-            src="/assest/leftBottom.png"
+            src="/assets/leftBottom.png"
             alt="Recent activity card showing transactions"
             width={400}
             height={200}
