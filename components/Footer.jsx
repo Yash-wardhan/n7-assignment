@@ -1,166 +1,135 @@
-"use client";
-import React from "react";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function Footer() {
-  return (
-    <footer className="w-full border-t border-zinc-200 bg-white py-16 dark:border-zinc-800 dark:bg-black">
-      <div className="mx-auto max-w-7xl px-6 md:px-8">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-8">
-          {/* Logo & Description */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-2">
-              <img
-                src="https://assets.aceternity.com/logo-dark.png"
-                alt="logo"
-                width={30}
-                height={30}
-                className="dark:invert"
-              />
-              <span className="text-xl font-bold tracking-tight text-black dark:text-white">
-                Startup
-              </span>
-            </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
-              Building the future of modern web applications. Scale faster, deploy smarter, and engage your customers.
-            </p>
-            <div className="mt-6 flex gap-4">
-              <a
-                href="#"
-                className="text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
-                aria-label="Twitter"
-              >
-                <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-              <a
-                href="#"
-                className="text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
-                aria-label="GitHub"
-              >
-                <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.577.688.48C19.138 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
-                </svg>
-              </a>
-              <a
-                href="#"
-                className="text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
-                aria-label="LinkedIn"
-              >
-                <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
-              </a>
-            </div>
-          </div>
+const solutions = [
+    { label: "Core Banking CB7", href: "/" },
+    { label: "Digital Banking N7", href: "/" },
+    { label: "Open Banking", href: "/" },
+    { label: "Loan Origination System", href: "/" },
+    { label: "Loan Management System", href: "/" },
+    { label: "Digital Transformation", href: "/" },
+];
 
-          {/* Navigation Links */}
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-3">
-            <div>
-              <h3 className="text-sm font-semibold tracking-wider text-black dark:text-white uppercase">
-                Product
-              </h3>
-              <ul className="mt-4 space-y-3">
-                <li>
-                  <a
-                    href="#features"
-                    className="text-sm text-zinc-500 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors"
-                  >
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#pricing"
-                    className="text-sm text-zinc-500 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors"
-                  >
-                    Pricing
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-sm text-zinc-500 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors"
-                  >
-                    Integrations
-                  </a>
-                </li>
-              </ul>
-            </div>
+const n7Banking = [
+    { label: "About Us", href: "/" },
+    { label: "Solutions", href: "/" },
+    { label: "Contact", href: "/" },
+    { label: "Company", href: "/" },
+    { label: "Careers", href: "/" },
+    { label: "Insights", href: "/" },
+    { label: "Core Team", href: "/" },
+    { label: "Brand Center", href: "/" },
+];
 
-            <div>
-              <h3 className="text-sm font-semibold tracking-wider text-black dark:text-white uppercase">
-                Company
-              </h3>
-              <ul className="mt-4 space-y-3">
-                <li>
-                  <a
-                    href="#"
-                    className="text-sm text-zinc-500 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors"
-                  >
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-sm text-zinc-500 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors"
-                  >
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-sm text-zinc-500 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors"
-                  >
-                    Blog
-                  </a>
-                </li>
-              </ul>
-            </div>
+const socials = [
+    { label: "LinkedIn", href: "/" },
+    { label: "X", href: "/" },
+];
 
-            <div className="col-span-2 sm:col-span-1">
-              <h3 className="text-sm font-semibold tracking-wider text-black dark:text-white uppercase">
-                Subscribe
-              </h3>
-              <p className="mt-4 text-xs text-zinc-500 dark:text-zinc-400 leading-normal">
-                Join our newsletter to stay updated on the latest news.
-              </p>
-              <form className="mt-3 flex max-w-sm items-center gap-1.5" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="email"
-                  placeholder="Enter email"
-                  className="w-full rounded-md border border-zinc-200 px-3 py-1.5 text-xs text-black placeholder:text-zinc-400 focus:outline-none focus:ring-1 focus:ring-black dark:border-zinc-800 dark:text-white dark:bg-zinc-900 dark:focus:ring-white"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center rounded-md bg-black p-2 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors"
-                  aria-label="Subscribe"
-                >
-                  <ArrowRight className="h-3 w-3" />
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
+const offices = [
+    {
+        city: "London",
+        address: "Linktia Infosystems Ltd – CB7, 26 Main Road Sundridge, TN14 6EP, England, United Kingdom.",
+    },
+    {
+        city: "Dubai",
+        address: "Linktia Infosystems Ltd – CB7, Jumeirah Business, Center 5 Cluster W, Jumeirah Lakes Towers, Dubai, United Arab Emirates",
+    },
+    {
+        city: "India",
+        address: "Linktia Infosystems Ltd – CB7, Nirmal, Anand Nagar, Suncity Road, Pune, Maharashtra, 411041, India",
+    },
+];
 
-        <div className="mt-12 border-t border-zinc-200 pt-8 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-zinc-400 dark:text-zinc-500">
-            &copy; {new Date().getFullYear()} Startup, Inc. All rights reserved.
-          </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-xs text-zinc-400 hover:text-black dark:hover:text-white transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-xs text-zinc-400 hover:text-black dark:hover:text-white transition-colors">
-              Terms of Service
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+function FooterLink({ label, href }) {
+    return (
+        <Link href={href}
+            className="flex items-center justify-between gap-4 text-zinc-400 hover:text-white transition-colors duration-200 text-[13px] lg:text-[14px] group py-1.5">
+            <span>{label}</span>
+            <span className="text-zinc-600 group-hover:text-white transition-colors"><Image src={"/assets/ArrowBlue.svg"} alt="right" width={10} height={10} /></span>
+        </Link>
+    );
 }
+
+function Footer() {
+    return (
+        <footer className="w-full py-16 lg:py-20" style={{ background: '#000D12' }}>
+            <div className="max-w-7xl mx-auto px-6 lg:px-0">
+
+                {/* Main Layout — Logo Left, Content Right */}
+                <div className="flex flex-col justify-between lg:flex-row gap-12 lg:gap-20">
+
+                    {/* Left — Logo */}
+                    <div className="shrink-0 lg:w-[420px]">
+                        <Image
+                            src="/assets/N7.svg"
+                            alt="N7"
+                            width={200}
+                            height={200}
+                            className="w-[140px] lg:w-[800px] h-auto"
+                        />
+                    </div>
+
+                    {/* Right — Top Offices + Divider + Bottom Links */}
+                    <div>
+
+                        <div className="flex flex-col w-full">
+                            {/* Top — Offices */}
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                                {offices.map((office, index) => (
+                                    <div key={index}>
+                                        <h4 className="text-white text-[14px] font-[500] mb-3">{office.city}</h4>
+                                        <p className="text-zinc-400 text-[13px] leading-relaxed">{office.address}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Divider */}
+                            <div className="w-full h-px bg-zinc-800 my-10" />
+
+                            {/* Bottom — Link Columns */}
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+
+                                {/* Solutions */}
+                                <div>
+                                    <h4 className="text-white text-[14px] font-[500] mb-3">Solutions</h4>
+                                    {solutions.map((item, index) => (
+                                        <FooterLink key={index} label={item.label} href={item.href} />
+                                    ))}
+                                </div>
+
+                                {/* N7 Banking */}
+                                <div>
+                                    <h4 className="text-white text-[14px] font-[500] mb-3">N7 Banking</h4>
+                                    {n7Banking.map((item, index) => (
+                                        <FooterLink key={index} label={item.label} href={item.href} />
+                                    ))}
+                                </div>
+
+                                {/* Our Socials */}
+                                <div>
+                                    <h4 className="text-white text-[14px] font-[500] mb-3">Our Socials</h4>
+                                    {socials.map((item, index) => (
+                                        <FooterLink key={index} label={item.label} href={item.href} />
+                                    ))}
+                                </div>
+
+                            </div>
+
+                        </div>
+                        {/* Divider */}
+                        <div className="w-full h-px bg-zinc-800 mt-12 mb-6" />
+
+                        {/* Copyright */}
+                        <p className="text-zinc-600 text-[12px] leading-relaxed text-center lg:text-left">
+                            Copyright © 2022 by Linktia Infosystems Limited — [CB7 and N7 as Commercial Brand] — [Registered under the Companies Act 2006 in England and Wales | Number of Incorporation 13100992]
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+    );
+}
+
+export default Footer;

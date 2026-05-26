@@ -64,7 +64,6 @@ export default function Navbar() {
               </a>
             ))}
             <div className="flex w-full flex-col gap-4">
-              <InactiveButton text="Login" href="#" />
             </div>
           </MobileNavMenu>
         </MobileNav>

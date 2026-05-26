@@ -1,6 +1,6 @@
 import Image from "next/image";
 import InactiveButton from "../ui/InactiveButton";
-import LearnMore from "../ui/LearMore";
+import LearnMore from "../ui/LearnMore";
 
 const cardsData = [
     {
