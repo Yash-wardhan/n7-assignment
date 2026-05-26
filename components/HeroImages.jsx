@@ -63,7 +63,7 @@ export default function HeroImages() {
           }}
         >
           <Image
-            src="/assest/HeroSectionImages.png"
+            src="/assets/HeroSectionImages.png"
             alt="Woman using banking app"
             width={600}
             height={450}

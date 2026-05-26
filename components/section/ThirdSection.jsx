@@ -4,33 +4,52 @@ import Image from 'next/image'
 
 function ThirdSection() {
     return (
-        <section className="my-20" style={{ background: 'url(/assets/CB7.svg) no-repeat' }}>
-            <div className='flex justify-between'>
-                {/* left side  */}
-                <div className="flex flex-col gap-2 text-center lg:text-left ml-40">
-                    <h1 className='text-[53px] font-[400] max-w-[650px]'>A complete cloud-based core banking.</h1>
-                    <p className='text-[16px] font-[400] text-zinc-400 max-w-[450px]'>Faster time to market with our cloud-based core banking services</p>
-                    <ActiveButton text="REQUEST DEMO" href="/contact" className="text-[15px] mt-8" />
+        <section
+            className="my-12 lg:my-20 px-4 lg:px-8"
+            style={{ background: 'url(/assets/CB7.svg) no-repeat center center' }}
+        >
+            <div className="max-w-7xl mx-auto">
+
+                {/* Top — Text + Image */}
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
+
+                    {/* Left */}
+                    <div className="flex flex-col gap-4 text-center lg:text-left w-full lg:w-1/2">
+                        <h1 className="text-[28px] sm:text-[36px] lg:text-[48px] xl:text-[53px] font-[400] text-white leading-tight max-w-[650px] mx-auto lg:mx-0">
+                            A complete cloud-based core banking.
+                        </h1>
+                        <p className="text-[14px] sm:text-[15px] lg:text-[16px] font-[400] text-zinc-400 max-w-[450px] mx-auto lg:mx-0">
+                            Faster time to market with our cloud-based core banking services
+                        </p>
+                        <div className="flex justify-center lg:justify-start mt-4">
+                            <ActiveButton text="REQUEST DEMO" href="/contact" />
+                        </div>
+                    </div>
+
+                    {/* Right */}
+                    <div className="w-full lg:w-1/2">
+                        <Image
+                            src="/assets/Screen-2.svg"
+                            alt="CB7 Dashboard"
+                            width={1020}
+                            height={1020}
+                            className="w-full h-auto object-contain"
+                        />
+                    </div>
+
                 </div>
-                {/* right side  */}
-                <div>
+
+                {/* Bottom — Image */}
+                <div className="mt-12 lg:mt-20 w-full">
                     <Image
-                        src="/assets/Screen-2.svg"
-                        alt="CB7"
+                        src="/assets/Screen-1.svg"
+                        alt="Core banking screen"
                         width={1020}
                         height={1020}
-                        className='w-full h-full object-contain'
+                        className="w-full h-auto object-contain"
                     />
                 </div>
-            </div>
-            {/* bottom  */}
-            <div className='flex my-20'>
-                <div>
-                <Image src="/assets/Screen-1.svg" alt='core banking'
-                    width={1020}
-                    height={1020} className='w-full h-full object-contain' />
-                </div>
-                <div className='flex items-center justify-center w-full'></div>
+
             </div>
         </section>
     )
