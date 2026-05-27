@@ -46,14 +46,23 @@ function FooterLink({ label, href }) {
         <Link href={href}
             className="flex items-center justify-between gap-4 text-zinc-400 hover:text-white transition-colors duration-200 text-[13px] lg:text-[14px] group py-1.5">
             <span>{label}</span>
-            <span className="text-zinc-600 group-hover:text-white transition-colors"><Image src={"/assets/ArrowBlue.svg"} alt="right" width={10} height={10} /></span>
+            <span className="text-zinc-600 group-hover:text-white transition-colors">
+                <Image src={"/assets/ArrowBlue.svg"} alt="right" width={10} height={10} />
+            </span>
         </Link>
     );
 }
 
 function Footer() {
     return (
-        <footer className="w-full py-16 lg:py-20" style={{ background: '#000D12' }}>
+       <footer className="w-full py-16 lg:py-20 relative overflow-hidden">
+
+            <div className="absolute inset-0 -z-20" style={{ background: '#000D12' }} />
+
+            <div className="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[60%]">
+                <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-blue-600 to-indigo-600 opacity-10 sm:left-[50%] sm:w-[50rem]" />
+            </div>
+
             <div className="max-w-7xl mx-auto px-6 lg:px-0">
 
                 {/* Main Layout — Logo Left, Content Right */}
@@ -66,14 +75,14 @@ function Footer() {
                             alt="N7"
                             width={200}
                             height={200}
-                            className="w-[140px] lg:w-[800px] h-auto"
+                            className="w-[140px] lg:w-[200px] h-auto"
                         />
                     </div>
 
                     {/* Right — Top Offices + Divider + Bottom Links */}
                     <div>
-
                         <div className="flex flex-col w-full">
+
                             {/* Top — Offices */}
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                                 {offices.map((office, index) => (
@@ -83,8 +92,10 @@ function Footer() {
                                     </div>
                                 ))}
                             </div>
+
                             {/* Bottom — Link Columns */}
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 my-18">
+                            {/* ✅ my-18 doesn't exist in Tailwind default scale, use my-16 or my-20 */}
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 my-16">
 
                                 {/* Solutions */}
                                 <div>
@@ -111,8 +122,8 @@ function Footer() {
                                 </div>
 
                             </div>
-
                         </div>
+
                         {/* Divider */}
                         <div className="w-full h-px bg-zinc-800 mt-12 mb-6" />
 
@@ -122,7 +133,6 @@ function Footer() {
                         </p>
                     </div>
                 </div>
-
             </div>
         </footer>
     );
