@@ -7,7 +7,6 @@ import { useEffect, useRef } from "react"
 
 function useAnimateOnView(ref) {
     useEffect(() => {
-        // Small defer ensures React has finished hydrating before we touch classList
         const timer = setTimeout(() => {
             const el = ref.current
             if (!el) return
@@ -49,7 +48,7 @@ function AnimatedDiv({ className, animation, style, children }) {
 
 function ForthSection() {
     return (
-        <div className="w-full bg-[#E9F4F9] py-20">
+        <div className="w-full bg-[#E9F4F9] py-20 overflow-x-hidden">
             <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-6 px-6 lg:px-8 py-10 lg:py-24 text-black">
 
                 <img className="blue-line-cutter"
@@ -71,14 +70,14 @@ function ForthSection() {
                         N7 helps your financial institution improve the client experience, automate and optimize procedures
                     </p>
                     <ActiveButton text="REQUEST DEMO" href="#" />
-                    <LearnMore  />
+                    <LearnMore />
                 </AnimatedDiv>
 
                 {/* Right */}
                 <div className="w-full lg:w-[65%] flex flex-col gap-16 lg:gap-32" style={{ position: 'relative', zIndex: 1 }}>
 
                     {/* Row 1 */}
-                    <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 relative">
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 relative overflow-hidden">
                         <Image
                             src="/assets/N7BlueCutter.svg"
                             alt="" className="n7-watermark" width={1000} height={1000}
@@ -86,7 +85,7 @@ function ForthSection() {
                         />
                         <AnimatedDiv
                             animation="left"
-                            className="w-full sm:w-[45%] max-w-[280px] sm:max-w-none shrink-0 mx-auto sm:mx-0"
+                            className="w-[60%] sm:w-[45%] max-w-[220px] sm:max-w-none shrink-0 mx-auto sm:mx-0"
                             style={{ position: 'relative', zIndex: 1 }}
                         >
                             <Image src="/assets/iPhone13Pro.svg" className="w-full h-auto object-contain" width={400} height={700} alt="iPhone N7 Banking App" />
@@ -105,7 +104,7 @@ function ForthSection() {
                     </div>
 
                     {/* Row 2 */}
-                    <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8">
+                    <div className="flex flex-col-reverse sm:flex-row justify-center items-center gap-6 sm:gap-8">
                         <AnimatedDiv animation="left" className="w-full sm:w-[55%]">
                             <Content
                                 title="No legacy IT systems"
@@ -115,7 +114,7 @@ function ForthSection() {
                         </AnimatedDiv>
                         <AnimatedDiv
                             animation="right"
-                            className="w-full sm:w-[45%] max-w-[280px] sm:max-w-none shrink-0 mx-auto sm:mx-0"
+                            className="w-[60%] sm:w-[45%] max-w-[220px] sm:max-w-none shrink-0 mx-auto sm:mx-0"
                         >
                             <Image src="/assets/iPhone13Pro-1.svg" className="w-full h-auto object-contain" width={400} height={700} alt="iPhone N7 Banking App" />
                         </AnimatedDiv>
@@ -125,7 +124,7 @@ function ForthSection() {
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8">
                         <AnimatedDiv
                             animation="left"
-                            className="w-full sm:w-[45%] max-w-[280px] sm:max-w-none shrink-0 mx-auto sm:mx-0"
+                            className="w-[60%] sm:w-[45%] max-w-[220px] sm:max-w-none shrink-0 mx-auto sm:mx-0"
                         >
                             <Image src="/assets/iPhone13Pro-2.svg" className="w-full h-auto object-contain" width={400} height={700} alt="iPhone N7 Banking App" />
                         </AnimatedDiv>
