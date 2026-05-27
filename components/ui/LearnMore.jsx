@@ -8,7 +8,7 @@ const LearnMore = ({ href = "#", className = "" }) => {
         after:h-[1px] after:w-[45%] after:bg-[#00B4FD]
         after:transition-[width] after:duration-[350ms] after:ease-in-out
         group-hover:after:w-full">
-        LEARN&nbsp;&nbsp;MORE
+        LEARN MORE
       </span>
       <span className="text-[#00B4FD] text-sm sm:text-base transition-transform duration-300 ease-in-out group-hover:translate-x-2">
         →

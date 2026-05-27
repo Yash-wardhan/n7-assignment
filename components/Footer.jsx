@@ -83,12 +83,8 @@ function Footer() {
                                     </div>
                                 ))}
                             </div>
-
-                            {/* Divider */}
-                            <div className="w-full h-px bg-zinc-800 my-10" />
-
                             {/* Bottom — Link Columns */}
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 my-18">
 
                                 {/* Solutions */}
                                 <div>
