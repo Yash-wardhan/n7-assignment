@@ -12,7 +12,7 @@ import {
   BookOpen,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
-import InactiveButton from "./ui/InactiveButton";
+import InactiveButton from "../../../components/ui/InactiveButton";
 
 export default function Navbar() {
   const navItems = [

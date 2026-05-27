@@ -1,5 +1,5 @@
 import React from "react";
-import HeroImages from "../HeroImages";
+import HeroImages from "../HeroImages/HeroImages";
 import InactiveButton from "../ui/InactiveButton";
 import ActiveButton from "../ui/ActiveButton";
 import Image from "next/image";
