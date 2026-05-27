@@ -217,3 +217,21 @@
 .animate-fade-right {
     animation: fadeRight 0.7s ease-out forwards;
 }
+
+.anim-up,
+.anim-left,
+.anim-right {
+    opacity: 0;
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.anim-up { transform: translateY(60px); }
+.anim-left { transform: translateX(-60px); }
+.anim-right { transform: translateX(60px); }
+
+.anim-up.in-view,
+.anim-left.in-view,
+.anim-right.in-view {
+    opacity: 1;
+    transform: translate(0);
+}

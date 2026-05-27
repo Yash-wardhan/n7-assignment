@@ -3,24 +3,49 @@ import Image from "next/image"
 import ActiveButton from "../ui/ActiveButton"
 import LearnMore from "../ui/LearnMore"
 import InactiveButton from "../ui/InactiveButton"
-import { motion } from "framer-motion"
+import { useEffect, useRef } from "react"
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 60 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
+function useAnimateOnView(ref) {
+    useEffect(() => {
+        // Small defer ensures React has finished hydrating before we touch classList
+        const timer = setTimeout(() => {
+            const el = ref.current
+            if (!el) return
+
+            const rect = el.getBoundingClientRect()
+            if (rect.top < window.innerHeight) {
+                el.classList.add('in-view')
+                return
+            }
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in-view')
+                            observer.unobserve(entry.target)
+                        }
+                    })
+                },
+                { threshold: 0, rootMargin: '0px 0px -50px 0px' }
+            )
+            observer.observe(el)
+            return () => observer.unobserve(el)
+        }, 0)
+
+        return () => clearTimeout(timer)
+    }, [ref])
 }
 
-const fadeLeft = {
-    hidden: { opacity: 0, x: -60 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } }
+function AnimatedDiv({ className, animation, style, children }) {
+    const ref = useRef(null)
+    useAnimateOnView(ref)
+    return (
+        <div ref={ref} className={`anim-${animation} ${className}`} style={style}>
+            {children}
+        </div>
+    )
 }
-
-const fadeRight = {
-    hidden: { opacity: 0, x: 60 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } }
-}
-
-const viewport = { once: true, amount: 0.3 }
 
 function ForthSection() {
     return (
@@ -34,10 +59,10 @@ function ForthSection() {
                 />
 
                 {/* Left */}
-                <motion.div
+                <AnimatedDiv
+                    animation="up"
                     className="w-full lg:w-[35%] flex flex-col gap-6 text-center lg:text-left items-center lg:items-start"
                     style={{ position: 'relative', zIndex: 1 }}
-                    initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp}
                 >
                     <h1 className="font-medium text-[28px] sm:text-[36px] lg:text-[48px] leading-tight">
                         Digital banking <br /> out-of-the-box
@@ -46,8 +71,8 @@ function ForthSection() {
                         N7 helps your financial institution improve the client experience, automate and optimize procedures
                     </p>
                     <ActiveButton text="REQUEST DEMO" href="#" />
-                    <LearnMore href="#" className="tracking-[0.2em]"/>
-                </motion.div>
+                    <LearnMore  />
+                </AnimatedDiv>
 
                 {/* Right */}
                 <div className="w-full lg:w-[65%] flex flex-col gap-16 lg:gap-32" style={{ position: 'relative', zIndex: 1 }}>
@@ -59,64 +84,58 @@ function ForthSection() {
                             alt="" className="n7-watermark" width={1000} height={1000}
                             style={{ position: 'absolute', top: '20%', left: '17.5%', transform: 'translate(-50%, -50%)', width: '90%', height: 'auto', pointerEvents: 'none', zIndex: 0 }}
                         />
-                        <motion.div
+                        <AnimatedDiv
+                            animation="left"
                             className="w-full sm:w-[45%] max-w-[280px] sm:max-w-none shrink-0 mx-auto sm:mx-0"
                             style={{ position: 'relative', zIndex: 1 }}
-                            initial="hidden" whileInView="visible" viewport={viewport} variants={fadeLeft}
                         >
                             <Image src="/assets/iPhone13Pro.svg" className="w-full h-auto object-contain" width={400} height={700} alt="iPhone N7 Banking App" />
-                        </motion.div>
-                        <motion.div
+                        </AnimatedDiv>
+                        <AnimatedDiv
+                            animation="right"
                             className="w-full sm:w-[55%]"
                             style={{ position: 'relative', zIndex: 1 }}
-                            initial="hidden" whileInView="visible" viewport={viewport} variants={fadeRight}
                         >
                             <Content
                                 title="Fully compliant with regulatory requirement"
                                 dec="The governance of risk management with regulations is achieved by our risk management framework that is fully integrated to work with digital bank's operational-risk protocols and procedures."
                                 points={["Pre-integrated Security System", "Fully Compliant With Regulatory Requirement", "Digitally Connected Core"]}
                             />
-                        </motion.div>
+                        </AnimatedDiv>
                     </div>
 
                     {/* Row 2 */}
-                    <div className="flex flex-col-reverse sm:flex-row justify-center items-center gap-6 sm:gap-8">
-                        <motion.div
-                            className="w-full sm:w-[55%]"
-                            initial="hidden" whileInView="visible" viewport={viewport} variants={fadeLeft}
-                        >
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8">
+                        <AnimatedDiv animation="left" className="w-full sm:w-[55%]">
                             <Content
                                 title="No legacy IT systems"
                                 dec="Our Digital Banking solution and multilayered approach help financial institutions take advantage of digital transformation by ensuring customer trust and regulatory compliance."
                                 points={["Adaptive & Intelligent API monetization", "Ambient User Experience", "Cloud-native With lower TCO"]}
                             />
-                        </motion.div>
-                        <motion.div
+                        </AnimatedDiv>
+                        <AnimatedDiv
+                            animation="right"
                             className="w-full sm:w-[45%] max-w-[280px] sm:max-w-none shrink-0 mx-auto sm:mx-0"
-                            initial="hidden" whileInView="visible" viewport={viewport} variants={fadeRight}
                         >
                             <Image src="/assets/iPhone13Pro-1.svg" className="w-full h-auto object-contain" width={400} height={700} alt="iPhone N7 Banking App" />
-                        </motion.div>
+                        </AnimatedDiv>
                     </div>
 
                     {/* Row 3 */}
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8">
-                        <motion.div
+                        <AnimatedDiv
+                            animation="left"
                             className="w-full sm:w-[45%] max-w-[280px] sm:max-w-none shrink-0 mx-auto sm:mx-0"
-                            initial="hidden" whileInView="visible" viewport={viewport} variants={fadeLeft}
                         >
                             <Image src="/assets/iPhone13Pro-2.svg" className="w-full h-auto object-contain" width={400} height={700} alt="iPhone N7 Banking App" />
-                        </motion.div>
-                        <motion.div
-                            className="w-full sm:w-[55%]"
-                            initial="hidden" whileInView="visible" viewport={viewport} variants={fadeRight}
-                        >
+                        </AnimatedDiv>
+                        <AnimatedDiv animation="right" className="w-full sm:w-[55%]">
                             <Content
                                 title="No traditional branches"
                                 dec="Our Digital Banking out-of-the-box helps you to accelerate innovation while reducing risks and optimising operational costs for a seamless branchless experience."
                                 points={["Branchless & Paperless Banking", "Digital Transformation Capability", "Optimized, Adoptable and Scalable"]}
                             />
-                        </motion.div>
+                        </AnimatedDiv>
                     </div>
 
                 </div>
@@ -143,8 +162,8 @@ function ForthSection() {
                         </p>
                     </div>
                     <div className="w-full lg:w-[45%] flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-end">
-                        <InactiveButton text="CONTACT US" href="/learn-more" className='font-[400]' />
-                        <ActiveButton text="REQUEST DEMO" href="/contact" className='font-[400]' />
+                        <InactiveButton text="CONTACT US" href="/learn-more" />
+                        <ActiveButton text="REQUEST DEMO" href="/contact" />
                     </div>
                 </div>
             </div>
@@ -155,12 +174,8 @@ function ForthSection() {
 function Content({ title = "", dec = "", points = [] }) {
     return (
         <div className="flex flex-col gap-4 p-4 sm:p-5 lg:p-6 h-full">
-            <h3 className="text-[13px] sm:text-[14px] lg:text-[16px] font-semibold text-black">
-                {title}
-            </h3>
-            <p className="text-[11px] sm:text-[12px] lg:text-[15px] rounded-xl mt-3 leading-relaxed">
-                {dec}
-            </p>
+            <h3 className="text-[13px] sm:text-[14px] lg:text-[16px] font-semibold text-black">{title}</h3>
+            <p className="text-[11px] sm:text-[12px] lg:text-[15px] rounded-xl mt-3 leading-relaxed">{dec}</p>
             <div className="flex flex-col gap-3 mt-1">
                 {points.map((point, index) => (
                     <div key={index} className="flex items-center gap-3">
