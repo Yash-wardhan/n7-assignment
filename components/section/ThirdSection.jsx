@@ -40,7 +40,7 @@ function ThirdSection() {
                 </div>
 
                 {/* Right — flush to edge */}
-                <div className="w-full lg:w-[45%] lg:-mr-8 xl:-mr-16">
+                <div className="w-[85%] lg:w-[45%] -mr-18 lg:-mr-8 xl:-mr-16">
                     <Image
                         src="/assets/Screen-2.svg"
                         alt="CB7 Dashboard"
@@ -55,7 +55,7 @@ function ThirdSection() {
             <div className="mt-12 lg:mt-20 w-full flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-10">
 
                 {/* Image flush to left */}
-                <div className="w-full lg:w-[45%] lg:-ml-8 xl:-ml-16">
+                <div className="w-[85%] lg:w-[45%] -ml-18 lg:-ml-8 xl:-ml-16">
                     <Image
                         src="/assets/Screen-1.svg"
                         alt="Core banking screen"
