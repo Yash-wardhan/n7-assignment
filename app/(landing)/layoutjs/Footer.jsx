@@ -55,11 +55,11 @@ function FooterLink({ label, href }) {
 
 function Footer() {
     return (
-       <footer className="w-full py-16 lg:py-20 relative overflow-hidden">
+        <footer className="w-full py-16 lg:py-20 relative overflow-hidden">
 
             <div className="absolute inset-0 -z-20" style={{ background: '#000D12' }} />
 
-            <div className="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[60%]">
+            <div className="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl top-[80%] sm:top-[60%]">
                 <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-blue-600 to-indigo-600 opacity-10 sm:left-[50%] sm:w-[50rem]" />
             </div>
 
