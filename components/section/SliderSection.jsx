@@ -2,17 +2,17 @@ import Image from "next/image";
 
 const items = [
     { type: "text", content: "N7", blue: true },
-    { type: "image", src: "/assets/star.svg", alt: "star" },
+    { type: "image", src: "/assets/star-1.svg", alt: "star" },
     { type: "text", content: "Say" },
     { type: "image", src: "/assets/hand-wave.svg", alt: "hand" },
     { type: "text", content: "to the new way of banking", bold: true },
-    { type: "image", src: "/assets/star.svg", alt: "star" },
+    { type: "image", src: "/assets/star-1.svg", alt: "star" },
     { type: "text", content: "CB7", blue: true },
-    { type: "image", src: "/assets/star.svg", alt: "star" },
+    { type: "image", src: "/assets/star-1.svg", alt: "star" },
     { type: "text", content: "Say" },
     { type: "image", src: "/assets/hand-wave.svg", alt: "hand" },
     { type: "text", content: "to the new way of banking", bold: true },
-    { type: "image", src: "/assets/star.svg", alt: "star" },
+    { type: "image", src: "/assets/star-1.svg", alt: "star" },
 ];
 
 function MarqueeItem({ item }) {
