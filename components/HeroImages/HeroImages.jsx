@@ -56,7 +56,7 @@ export default function HeroImages() {
       >
         {/* Main Image — Woman with laptop */}
         <div
-          className="relative rounded-2xl w-[100%] overflow-hidden shadow-2xl"
+          className="relative rounded-2xl w-[100%] lg:w-[75%] overflow-hidden shadow-2xl"
           style={{
             transform: "translateZ(0px)",
             transformStyle: "preserve-3d",
